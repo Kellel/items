@@ -1,0 +1,14 @@
+#AuthType Basic
+#AuthBasicProvider ldap
+#AuthName "Admin Scripts"
+#AuthLDAPURL "ldap://ldap1.restek.wwu.edu ldap2.restek.wwu.edu/ou=People,dc=restek,dc=wwu,dc=edu?uid?" TLS
+#AuthLDAPBindDN "cn=bind,dc=restek,dc=wwu,dc=edu"
+#AuthLDAPBindPassword restek9
+#AuthLDAPGroupAttributeIsDN off
+#AuthLDAPGroupAttribute memberUid
+#require user masen foxk5
+
+Options ExecCGI
+
+AddHandler wsgi-script .wsgi
+
