@@ -1,10 +1,15 @@
+from __future__ import absolute_import
 from bottle import Bottle, run
 
 app = Bottle()
 
-import sys
-sys.path.append("./client")
-import client
+import os, sys, inspect
+#realpath() will make things work even symlinks :)
+folder = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile(inspect.currentframe()))[0]))
+if folder not in sys.path:
+    sys.path.insert(0, folder)
+
+from .client import client
 page = client.page()
 
 @app.route('/')
